@@ -32,7 +32,7 @@ public class CarRepository {
                 .mileage(100)
                 .fuelType(Fuel.GASOLINE)
                 .insurance(true)
-                .build()),
+                .build(),
             Car.builder()
                 .id(2L)
                 .brand("Mazda")
@@ -43,7 +43,12 @@ public class CarRepository {
                 .mileage(100)
                 .fuelType(Fuel.GASOLINE)
                 .insurance(false)
-                .build();
+                .build()
+        );
     }
 
+    public List<Car> findAll() {
+        log.info("find all cars");
+        return cars;
+    }
 }
