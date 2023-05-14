@@ -16,6 +16,8 @@ import java.util.List;
 public class MyFirstController {
 
     private final MyService service;
+
+    //This is what happens under the hood with Lombok @Slf4j
     private static final Logger log = LoggerFactory.getLogger(MyFirstController.class);
 
     public MyFirstController(MyService service) {
@@ -58,6 +60,12 @@ public class MyFirstController {
             return ResponseEntity.badRequest().body("Provide credentials");
         }
         return ResponseEntity.ok("Success");
+    }
 
+    @GetMapping("/secret")
+    public String getOneSecret(){
+       String secretToShare = service.shareOneSecret();
+       log.info("Sharing [{}] secret with user", secretToShare);
+       return secretToShare;
     }
 }
