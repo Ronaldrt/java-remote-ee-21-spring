@@ -40,4 +40,13 @@ public class CarController {
                 .body(saved);
     }
 
+    @DeleteMapping("/cars/{id}")
+    public ResponseEntity<Void> deleteCarById(@PathVariable Long id){
+        log.info("Deleting car by id: [{}]", id);
+        carService.deleteCarById(id);
+        return ResponseEntity.noContent()
+                .build();
+
+    }
+
 }
