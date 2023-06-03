@@ -56,4 +56,10 @@ public class CarController {
 
     }
 
+    @PatchMapping("/cars/{id}")
+    public Car updateCar(@PathVariable("id") Long id, @RequestBody Car carToUpdate){
+        log.info("Updating car with id: [{}] with content: [{}]", id, carToUpdate);
+        return carService.updateCar(id, carToUpdate);
+
+    }
 }
